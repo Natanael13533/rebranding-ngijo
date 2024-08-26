@@ -11,19 +11,39 @@ import Typography from '@mui/material/Typography';
 import MenuItem from '@mui/material/MenuItem';
 import Drawer from '@mui/material/Drawer';
 import MenuIcon from '@mui/icons-material/Menu';
+import Menu from '@mui/material/Menu';
 import ToggleColorMode from './ToggleColorMode';
 
 const logoStyle = {
-  width: '140px',
+  width: '90px',
   height: 'auto',
   cursor: 'pointer',
 };
 
 function AppAppBar({ mode, toggleColorMode }) {
   const [open, setOpen] = React.useState(false);
+  const [profilAnchorEl, setProfilAnchorEl] = React.useState(null);
+  const [infoAnchorEl, setInfoAnchorEl] = React.useState(null);
 
   const toggleDrawer = (newOpen) => () => {
     setOpen(newOpen);
+  };
+
+  const handleProfilClick = (event) => {
+    setProfilAnchorEl(event.currentTarget);
+    setInfoAnchorEl(null); // Ensure the info menu closes when profiling is opened
+  };
+
+  const handleProfilClose = () => {
+    setProfilAnchorEl(null);
+  };
+
+  const handleInfoClick = (event) => {
+    setInfoAnchorEl(event.currentTarget);
+  };
+
+  const handleInfoClose = () => {
+    setInfoAnchorEl(null);
   };
 
   const scrollToSection = (sectionId) => {
@@ -37,6 +57,8 @@ function AppAppBar({ mode, toggleColorMode }) {
         behavior: 'smooth',
       });
       setOpen(false);
+      handleProfilClose();
+      handleInfoClose();
     }
   };
 
@@ -84,27 +106,92 @@ function AppAppBar({ mode, toggleColorMode }) {
               }}
             >
               <img
-                src={
-                  'https://assets-global.website-files.com/61ed56ae9da9fd7e0ef0a967/61f12e6faf73568658154dae_SitemarkDefault.svg'
-                }
+                src="/static/images/avatar/file.png"
                 style={logoStyle}
                 alt="logo of sitemark"
               />
               <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-                <MenuItem
-                  onClick={() => scrollToSection('features')}
+                <Button
+                  onClick={scrollToSection('home')}
                   sx={{ py: '6px', px: '12px' }}
                 >
                   <Typography variant="body2" color="text.primary">
-                    Features
+                    Beranda
                   </Typography>
-                </MenuItem>
+                </Button>
+                <Button
+                  onClick={handleProfilClick}
+                  sx={{ py: '6px', px: '12px' }}
+                >
+                  <Typography variant="body2" color="text.primary">
+                    Profil Kelurahan
+                  </Typography>
+                </Button>
+                <Menu
+                  anchorEl={profilAnchorEl}
+                  open={Boolean(profilAnchorEl)}
+                  onClose={handleProfilClose}
+                  MenuListProps={{
+                    'aria-labelledby': 'profil-button',
+                  }}
+                >
+                  <MenuItem onClick={() => scrollToSection('sitemap')}>
+                    sitemap
+                  </MenuItem>
+                  <MenuItem onClick={() => scrollToSection('monografi')}>
+                    Monografi statis & dinamis
+                  </MenuItem>
+                  <MenuItem
+                    onClick={handleInfoClick}
+                  >
+                    Daftar Informasi Publik
+                  </MenuItem>
+                  <MenuItem onClick={() => scrollToSection('visi-misi')}>
+                    Visi Misi
+                  </MenuItem>
+                  <MenuItem onClick={() => scrollToSection('struktur')}>
+                    Struktur Pemerintahan
+                  </MenuItem>
+                  <MenuItem onClick={() => scrollToSection('sarana')}>
+                    Sarana Prasarana
+                  </MenuItem>
+                  <MenuItem onClick={() => scrollToSection('sumber-daya')}>
+                    Sumber Daya Manusia
+                  </MenuItem>
+                  <MenuItem onClick={() => scrollToSection('regulasi')}>
+                    Regulasi
+                  </MenuItem>
+                </Menu>
+                <Menu
+                  anchorEl={infoAnchorEl}
+                  open={Boolean(infoAnchorEl)}
+                  onClose={handleInfoClose}
+                  MenuListProps={{
+                    'aria-labelledby': 'info-button',
+                  }}
+                  PaperProps={{
+                    sx: { width: 220 }, // Adjust width as needed
+                  }}
+                >
+                  <MenuItem onClick={() => scrollToSection('visi-misi')}>
+                    Daftar Informasi Berkala
+                  </MenuItem>
+                  <MenuItem onClick={() => scrollToSection('struktur')}>
+                    Daftar Informasi Serta Merta
+                  </MenuItem>
+                  <MenuItem onClick={() => scrollToSection('sarana')}>
+                    Daftar Informasi Setiap Saat
+                  </MenuItem>
+                  <MenuItem onClick={() => scrollToSection('regulasi')}>
+                    Daftar Informasi Dikecualikan
+                  </MenuItem>
+                </Menu>
                 <MenuItem
                   onClick={() => scrollToSection('testimonials')}
                   sx={{ py: '6px', px: '12px' }}
                 >
                   <Typography variant="body2" color="text.primary">
-                    Testimonials
+                    Galeri
                   </Typography>
                 </MenuItem>
                 <MenuItem
@@ -112,7 +199,7 @@ function AppAppBar({ mode, toggleColorMode }) {
                   sx={{ py: '6px', px: '12px' }}
                 >
                   <Typography variant="body2" color="text.primary">
-                    Highlights
+                    Tematik
                   </Typography>
                 </MenuItem>
                 <MenuItem
@@ -120,7 +207,7 @@ function AppAppBar({ mode, toggleColorMode }) {
                   sx={{ py: '6px', px: '12px' }}
                 >
                   <Typography variant="body2" color="text.primary">
-                    Pricing
+                    Berita
                   </Typography>
                 </MenuItem>
                 <MenuItem
@@ -128,7 +215,7 @@ function AppAppBar({ mode, toggleColorMode }) {
                   sx={{ py: '6px', px: '12px' }}
                 >
                   <Typography variant="body2" color="text.primary">
-                    FAQ
+                    About Us
                   </Typography>
                 </MenuItem>
               </Box>
@@ -141,26 +228,6 @@ function AppAppBar({ mode, toggleColorMode }) {
               }}
             >
               <ToggleColorMode mode={mode} toggleColorMode={toggleColorMode} />
-              <Button
-                color="primary"
-                variant="text"
-                size="small"
-                component="a"
-                href="/material-ui/getting-started/templates/sign-in/"
-                target="_blank"
-              >
-                Sign in
-              </Button>
-              <Button
-                color="primary"
-                variant="contained"
-                size="small"
-                component="a"
-                href="/material-ui/getting-started/templates/sign-up/"
-                target="_blank"
-              >
-                Sign up
-              </Button>
             </Box>
             <Box sx={{ display: { sm: '', md: 'none' } }}>
               <Button
@@ -205,30 +272,6 @@ function AppAppBar({ mode, toggleColorMode }) {
                   </MenuItem>
                   <MenuItem onClick={() => scrollToSection('faq')}>FAQ</MenuItem>
                   <Divider />
-                  <MenuItem>
-                    <Button
-                      color="primary"
-                      variant="contained"
-                      component="a"
-                      href="/material-ui/getting-started/templates/sign-up/"
-                      target="_blank"
-                      sx={{ width: '100%' }}
-                    >
-                      Sign up
-                    </Button>
-                  </MenuItem>
-                  <MenuItem>
-                    <Button
-                      color="primary"
-                      variant="outlined"
-                      component="a"
-                      href="/material-ui/getting-started/templates/sign-in/"
-                      target="_blank"
-                      sx={{ width: '100%' }}
-                    >
-                      Sign in
-                    </Button>
-                  </MenuItem>
                 </Box>
               </Drawer>
             </Box>

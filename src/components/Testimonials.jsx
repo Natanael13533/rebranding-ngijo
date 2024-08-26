@@ -101,12 +101,13 @@ export default function Testimonials() {
         }}
       >
         <Typography component="h2" variant="h4" color="text.primary">
-          Testimonials
+          Galeri
         </Typography>
         <Typography variant="body1" color="text.secondary">
-          See what our customers love about our products. Discover how we excel in
-          efficiency, durability, and satisfaction. Join us for quality, innovation,
-          and reliable support.
+          Galeri kelurahan Ngijo, untuk lebih banyaknya dapat dilihat mengguanakan link berikut:
+        </Typography>
+        <Typography variant="body1" color="text.secondary">
+        https://www.instagram.com/kelurahanngijo/ dan https://www.facebook.com/kelurahanngijo/
         </Typography>
       </Box>
       <Grid container spacing={2}>

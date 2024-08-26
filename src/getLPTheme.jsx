@@ -2,13 +2,13 @@ import { alpha } from '@mui/material/styles';
 import { red } from '@mui/material/colors';
 
 export const brand = {
-  50: '#F0F7FF',
+  50: '#0a0a0a',
   100: '#CEE5FD',
   200: '#9CCCFC',
-  300: '#55A6F6',
-  400: '#0A66C2',
-  500: '#0959AA',
-  600: '#064079',
+  300: '#ED1C24',
+  400: '#d6060b',
+  500: '#A0153E',
+  600: '#FFFFFF',
   700: '#033363',
   800: '#02294F',
   900: '#021F3B',
