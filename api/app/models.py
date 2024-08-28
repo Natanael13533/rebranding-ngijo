@@ -37,3 +37,21 @@ class GaleriImage(models.Model):
     
     class Meta:
         db_table = "tbGaleriImage"
+
+class Pegawai(models.Model):
+    ROLE_CHOICES = [('sipil', 'sipil'), ('Non-ASN', 'Non-ASN')]
+
+    image = models.ImageField(null=True, blank=True)
+    name = models.CharField(max_length=80)
+    jobTitle = models.CharField(max_length=40)
+    unit_placement = models.CharField(max_length=40)
+    opd = models.CharField(max_length=30)
+    role = models.CharField(max_length=7, choices=ROLE_CHOICES, default='sipil')
+    updated_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+            return self.name
+    
+    class Meta:
+        db_table = "tbPegawai"
