@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Tematik{
+export default function Tematik(){
     return (
         <div>
             <h1>Tematik</h1>

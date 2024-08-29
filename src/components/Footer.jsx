@@ -39,7 +39,7 @@ export default function Footer() {
         textAlign: { sm: 'center', md: 'left' },
       }}
     >
-      <Box
+      {/* <Box
         sx={{
           display: 'flex',
           flexDirection: { xs: 'column', sm: 'row' },
@@ -157,7 +157,7 @@ export default function Footer() {
             Contact
           </Link>
         </Box>
-      </Box>
+      </Box> */}
       <Box
         sx={{
           display: 'flex',

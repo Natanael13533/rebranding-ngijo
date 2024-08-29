@@ -14,6 +14,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Menu from '@mui/material/Menu';
 import ToggleColorMode from './ToggleColorMode';
 
+import { Link } from 'react-router-dom';
+
 const logoStyle = {
   width: '90px',
   height: 'auto',
@@ -112,7 +114,9 @@ function AppAppBar({ mode, toggleColorMode }) {
               />
               <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                 <Button
-                  onClick={scrollToSection('home')}
+                  component={Link} // Use Link as the Button's component
+                  to="/" // The route to navigate to
+                  // onClick={scrollToSection('home')}
                   sx={{ py: '6px', px: '12px' }}
                 >
                   <Typography variant="body2" color="text.primary">
@@ -135,10 +139,16 @@ function AppAppBar({ mode, toggleColorMode }) {
                     'aria-labelledby': 'profil-button',
                   }}
                 >
-                  <MenuItem onClick={() => scrollToSection('sitemap')}>
+                  <MenuItem
+                    component={Link} // Use Link as the Button's component
+                    to="/profil/sitemap" // The route to navigate to 
+                  >
                     sitemap
                   </MenuItem>
-                  <MenuItem onClick={() => scrollToSection('monografi')}>
+                  <MenuItem
+                    component={Link} // Use Link as the Button's component
+                    to="/profil/monografi" // The route to navigate to
+                  >
                     Monografi statis & dinamis
                   </MenuItem>
                   <MenuItem
@@ -146,19 +156,39 @@ function AppAppBar({ mode, toggleColorMode }) {
                   >
                     Daftar Informasi Publik
                   </MenuItem>
-                  <MenuItem onClick={() => scrollToSection('visi-misi')}>
+                  <MenuItem
+                    component={Link} // Use Link as the Button's component
+                    to="/profil/visi" // The route to navigate to 
+                    onClick={() => scrollToSection('visi-misi')}
+                  >
                     Visi Misi
                   </MenuItem>
-                  <MenuItem onClick={() => scrollToSection('struktur')}>
+                  <MenuItem
+                    component={Link} // Use Link as the Button's component
+                    to="/profil/struktur" // The route to navigate to 
+                    onClick={() => scrollToSection('struktur')}
+                  >
                     Struktur Pemerintahan
                   </MenuItem>
-                  <MenuItem onClick={() => scrollToSection('sarana')}>
+                  <MenuItem
+                    component={Link} // Use Link as the Button's component
+                    to="/profil/sarana" // The route to navigate to 
+                    onClick={() => scrollToSection('sarana')}
+                  >
                     Sarana Prasarana
                   </MenuItem>
-                  <MenuItem onClick={() => scrollToSection('sumber-daya')}>
+                  <MenuItem
+                    component={Link} // Use Link as the Button's component
+                    to="/profil/sumber" // The route to navigate to 
+                    onClick={() => scrollToSection('sumber-daya')}
+                  >
                     Sumber Daya Manusia
                   </MenuItem>
-                  <MenuItem onClick={() => scrollToSection('regulasi')}>
+                  <MenuItem
+                    component={Link} // Use Link as the Button's component
+                    to="/profil/regulasi" // The route to navigate to 
+                    onClick={() => scrollToSection('regulasi')}
+                  >
                     Regulasi
                   </MenuItem>
                 </Menu>
@@ -173,20 +203,34 @@ function AppAppBar({ mode, toggleColorMode }) {
                     sx: { width: 220 }, // Adjust width as needed
                   }}
                 >
-                  <MenuItem onClick={() => scrollToSection('visi-misi')}>
+                  <MenuItem 
+                    component={Link} // Use Link as the Button's component
+                    to="/profil/informasi/berkala" // The route to navigate to 
+                  >
                     Daftar Informasi Berkala
                   </MenuItem>
-                  <MenuItem onClick={() => scrollToSection('struktur')}>
+                  <MenuItem
+                    component={Link} // Use Link as the Button's component
+                    to="/profil/informasi/serta" // The route to navigate to  
+                  >
                     Daftar Informasi Serta Merta
                   </MenuItem>
-                  <MenuItem onClick={() => scrollToSection('sarana')}>
+                  <MenuItem
+                    component={Link} // Use Link as the Button's component
+                    to="/profil/informasi/setiap" // The route to navigate to  
+                  >
                     Daftar Informasi Setiap Saat
                   </MenuItem>
-                  <MenuItem onClick={() => scrollToSection('regulasi')}>
+                  <MenuItem
+                    component={Link} // Use Link as the Button's component
+                    to="/profil/informasi/dikecualikan" // The route to navigate to  
+                  >
                     Daftar Informasi Dikecualikan
                   </MenuItem>
                 </Menu>
                 <MenuItem
+                  component={Link} // Use Link as the Button's component
+                  to="/galeri" // The route to navigate to
                   onClick={() => scrollToSection('testimonials')}
                   sx={{ py: '6px', px: '12px' }}
                 >
@@ -195,6 +239,8 @@ function AppAppBar({ mode, toggleColorMode }) {
                   </Typography>
                 </MenuItem>
                 <MenuItem
+                  component={Link} // Use Link as the Button's component
+                  to="/tematik" // The route to navigate to
                   onClick={() => scrollToSection('highlights')}
                   sx={{ py: '6px', px: '12px' }}
                 >
@@ -203,6 +249,8 @@ function AppAppBar({ mode, toggleColorMode }) {
                   </Typography>
                 </MenuItem>
                 <MenuItem
+                  component={Link} // Use Link as the Button's component
+                  to="/berita" // The route to navigate to
                   onClick={() => scrollToSection('pricing')}
                   sx={{ py: '6px', px: '12px' }}
                 >
@@ -211,6 +259,8 @@ function AppAppBar({ mode, toggleColorMode }) {
                   </Typography>
                 </MenuItem>
                 <MenuItem
+                  component={Link} // Use Link as the Button's component
+                  to="/about" // The route to navigate to
                   onClick={() => scrollToSection('faq')}
                   sx={{ py: '6px', px: '12px' }}
                 >
@@ -258,19 +308,6 @@ function AppAppBar({ mode, toggleColorMode }) {
                   >
                     <ToggleColorMode mode={mode} toggleColorMode={toggleColorMode} />
                   </Box>
-                  <MenuItem onClick={() => scrollToSection('features')}>
-                    Features
-                  </MenuItem>
-                  <MenuItem onClick={() => scrollToSection('testimonials')}>
-                    Testimonials
-                  </MenuItem>
-                  <MenuItem onClick={() => scrollToSection('highlights')}>
-                    Highlights
-                  </MenuItem>
-                  <MenuItem onClick={() => scrollToSection('pricing')}>
-                    Pricing
-                  </MenuItem>
-                  <MenuItem onClick={() => scrollToSection('faq')}>FAQ</MenuItem>
                   <Divider />
                 </Box>
               </Drawer>
