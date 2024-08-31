@@ -10,7 +10,7 @@ export default function NotFound() {
         <Box>
             <Container
                 sx={{
-                display: 'flex',
+                display: 'flex', 
                 flexDirection: 'column',
                 alignItems: 'center',
                 pt: { xs: 14, sm: 20 },
@@ -46,21 +46,23 @@ export default function NotFound() {
                     color="text.secondary"
                     sx={{ alignSelf: 'center', width: { sm: '100%', md: '80%' } }}
                 >
-                    Page Not Found
+                    Yahh page yang kamu cari belum ditemukan
                 </Typography>
                 </Stack>
                 <Box
                 id="image"
                 sx={(theme) => ({
-                    mt: { xs: 8, sm: 10 },
+                    mt: { xs: 5, sm: 10 },
                     alignSelf: 'center',
-                    height: { xs: 200, sm: 350 },
-                    width: '100%',
+                    height: { xs: 300, sm: 500 }, // Meningkatkan ukuran gambar untuk layar kecil dan besar
+                    width: { xs: '100%', sm: '80%' }, // Menyesuaikan lebar gambar
                     backgroundImage:
                     theme.palette.mode === 'light'
-                        ? 'url("/static/images/templates/templates-images/banner.png")'
-                        : 'url("/static/images/templates/templates-images/banner.png")',
-                    backgroundSize: 'cover',
+                        ? 'url("/static/images/templates/templates-images/bannervector.png")'
+                        : 'url("/static/images/templates/templates-images/bannervector.png")',
+                    backgroundSize: 'cover',  // Menjaga gambar tetap mengisi elemen
+                    backgroundPosition: 'center',  // Menempatkan gambar di tengah
+                    backgroundRepeat: 'no-repeat',
                     borderRadius: '10px',
                     outline: '1px solid',
                     outlineColor:
