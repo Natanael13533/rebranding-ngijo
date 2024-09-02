@@ -11,6 +11,7 @@ import AppAppBar from './components/AppAppBar';
 import getLPTheme from './getLPTheme';
 
 import Berita from './pages/Berita';
+import BeritaDetail from './pages/BeritaDetail'
 import Galeri from './pages/Galeri';
 import Tematik from './pages/Tematik';
 import About from './pages/About';
@@ -30,6 +31,7 @@ import Serta from './pages/daftar-informasi-publik/Serta'
 import Setiap from './pages/daftar-informasi-publik/Setiap'
 import Dikecualikan from './pages/daftar-informasi-publik/Dikecualikan'
 import NotFound from './pages/NotFound';
+import GaleriDetail from './pages/GaleriDetail';
 
 function ToggleCustomTheme({ showCustomTheme, toggleCustomTheme }) {
   return (
@@ -73,59 +75,6 @@ ToggleCustomTheme.propTypes = {
   toggleCustomTheme: PropTypes.func.isRequired,
 };
 
-// export default function App() {
-//   const [mode, setMode] = React.useState('light');
-//   const [showCustomTheme, setShowCustomTheme] = React.useState(true);
-//   const LPtheme = createTheme(getLPTheme(mode));
-//   const defaultTheme = createTheme({ palette: { mode } });
-
-//   const toggleColorMode = () => {
-//     setMode((prev) => (prev === 'dark' ? 'light' : 'dark'));
-//   };
-
-//   const toggleCustomTheme = () => {
-//     setShowCustomTheme((prev) => !prev);
-//   };
-
-//   return (
-//     <Router>
-//       <ThemeProvider theme={showCustomTheme ? LPtheme : defaultTheme}>
-//         <CssBaseline />
-//         <AppAppBar mode={mode} toggleColorMode={toggleColorMode} />
-//         <Box sx={{ bgcolor: 'background.default' }}>
-//           <Routes>
-//             <Route path="/berita" element={<Screen><Berita /></Screen>} />
-//             <Route path="/" element={<Home />} />
-//             <Route path="/galeri" element={<Screen><Galeri /></Screen>} />
-//             <Route path="/tematik" element={<Screen><Tematik /></Screen>} />
-//             <Route path="/about" element={<Screen><About /></Screen>} />
-
-//             <Route path="/profil/sitemap" element={<Screen><Sitemap /></Screen>} />
-//             <Route path="/profil/monografi" element={<Screen><Monografi /></Screen>} />
-//             <Route path="/profil/visi" element={<Screen><Visimisi /></Screen>} />
-//             <Route path="/profil/struktur" element={<Screen><Struktur /></Screen>} />
-//             <Route path="/profil/sarana" element={<Screen><Sarana /></Screen>} />
-//             <Route path="/profil/sumber" element={<Screen><Sdm /></Screen>} />
-//             <Route path="/profil/regulasi" element={<Screen><Regulasi /></Screen>} />
-
-//             <Route path="/profil/informasi/berkala" element={<Screen><Berkala /></Screen>} />
-//             <Route path="/profil/informasi/serta" element={<Screen><Serta /></Screen>} />
-//             <Route path="/profil/informasi/setiap" element={<Screen><Setiap /></Screen>} />
-//             <Route path="/profil/informasi/dikecualikan" element={<Screen><Dikecualikan /></Screen>} />
-
-//             {/* Catch-all route for 404 */}
-//             {/* <Route path="*" element={<NotFound />} /> */}
-//           </Routes>
-//         </Box>
-//         {/* <ToggleCustomTheme
-//           showCustomTheme={showCustomTheme}
-//           toggleCustomTheme={toggleCustomTheme}
-//         /> */}
-//       </ThemeProvider>
-//     </Router>
-//   );
-// }
-
 const App = () => {
 
   const [mode, setMode] = React.useState('light');
@@ -145,8 +94,10 @@ const App = () => {
   
   const routes = [
     "/berita",
+    /^\/berita\/\d+$/,
     "/",
     "/galeri",
+    /^\/galeri\/\d+$/,
     "/tematik",
     "/about",
     "/profil/sitemap",
@@ -162,7 +113,15 @@ const App = () => {
     "/profil/informasi/dikecualikan",
   ];
 
-  const isRouteDefined = routes.includes(location.pathname);
+  const isRouteDefined = routes.some((route) => {
+    if (typeof route === "string") {
+      return route === location.pathname;
+    } 
+    else if (route instanceof RegExp) {
+      return route.test(location.pathname);
+    }
+    return false;
+  });
 
   return (
     <>
@@ -173,8 +132,10 @@ const App = () => {
           <Box sx={{ bgcolor: 'background.default' }}>
             <Routes>
               <Route path="/berita" element={<Screen><Berita /></Screen>} />
+              <Route path="/berita/:id" element={<Screen><BeritaDetail /></Screen>} />
               <Route path="/" element={<Home />} />
               <Route path="/galeri" element={<Screen><Galeri /></Screen>} />
+              <Route path="/galeri/:id" element={<Screen><GaleriDetail /></Screen>} />
               <Route path="/tematik" element={<Screen><Tematik /></Screen>} />
               <Route path="/about" element={<Screen><About /></Screen>} />
 
