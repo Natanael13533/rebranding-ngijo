@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from app.models import Berita, Galeri, GaleriImage
+from app.models import Berita, Galeri, GaleriImage, Pegawai
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -29,5 +29,11 @@ class GaleriSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Galeri
+        fields = '__all__'
+        extra_kwargs = {"user": {"read_only": True}}
+
+class PegawaiSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Pegawai
         fields = '__all__'
         extra_kwargs = {"user": {"read_only": True}}

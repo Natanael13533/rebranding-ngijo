@@ -4,8 +4,8 @@ from django.http import Http404
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
-from app.models import Berita, Galeri
-from app.serializers import BeritaSerializer, GaleriSerializer
+from app.models import Berita, Galeri, Pegawai
+from app.serializers import BeritaSerializer, GaleriSerializer, PegawaiSerializer
 
 # Create your views here.
 
@@ -43,4 +43,16 @@ class GaleriDetail(APIView):
     def get(self, request, pk, format=None):
         galeri = self.get_object(pk)
         serializer = GaleriSerializer(galeri)
+        return Response(serializer.data)
+
+class PegawaiSipilList(APIView):
+    def get(self, request, format=None):
+        pegawaiList = Pegawai.objects.filter(role="sipil")
+        serializer = PegawaiSerializer(pegawaiList, many=True)
+        return Response(serializer.data)
+
+class PegawaiNonAsnList(APIView):
+    def get(self, request, format=None):
+        pegawaiList = Pegawai.objects.filter(role="Non-ASN")
+        serializer = PegawaiSerializer(pegawaiList, many=True)
         return Response(serializer.data)

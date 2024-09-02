@@ -43,7 +43,7 @@ class Pegawai(models.Model):
 
     image = models.ImageField(null=True, blank=True)
     name = models.CharField(max_length=80)
-    jobTitle = models.CharField(max_length=40)
+    jobTitle = models.CharField(max_length=150)
     unit_placement = models.CharField(max_length=40)
     opd = models.CharField(max_length=30)
     role = models.CharField(max_length=7, choices=ROLE_CHOICES, default='sipil')
