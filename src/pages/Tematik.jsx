@@ -6,7 +6,7 @@ export default function Tematik() {
             <h1>Kampung Tematik</h1>
             <img src="/Ngijo.png" alt="Kampung Tematik" />
             <p>
-                <a href="https://www.example.com">Kunjungi halaman selengkapnya</a>
+                <a href="https://www.instagram.com/kampoeng.jamrut/?hl=en">Kunjungi halaman selengkapnya</a>
             </p>
         </div>
     );
