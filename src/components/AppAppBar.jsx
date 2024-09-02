@@ -25,7 +25,6 @@ const logoStyle = {
 function AppAppBar({ mode, toggleColorMode }) {
   const [open, setOpen] = React.useState(false);
   const [profilAnchorEl, setProfilAnchorEl] = React.useState(null);
-  const [infoAnchorEl, setInfoAnchorEl] = React.useState(null);
 
   const toggleDrawer = (newOpen) => () => {
     setOpen(newOpen);
@@ -33,19 +32,10 @@ function AppAppBar({ mode, toggleColorMode }) {
 
   const handleProfilClick = (event) => {
     setProfilAnchorEl(event.currentTarget);
-    setInfoAnchorEl(null); // Ensure the info menu closes when profiling is opened
   };
 
   const handleProfilClose = () => {
     setProfilAnchorEl(null);
-  };
-
-  const handleInfoClick = (event) => {
-    setInfoAnchorEl(event.currentTarget);
-  };
-
-  const handleInfoClose = () => {
-    setInfoAnchorEl(null);
   };
 
   const scrollToSection = (sectionId) => {
@@ -60,7 +50,6 @@ function AppAppBar({ mode, toggleColorMode }) {
       });
       setOpen(false);
       handleProfilClose();
-      handleInfoClose();
     }
   };
 
@@ -116,7 +105,6 @@ function AppAppBar({ mode, toggleColorMode }) {
                 <Button
                   component={Link} // Use Link as the Button's component
                   to="/" // The route to navigate to
-                  // onClick={scrollToSection('home')}
                   sx={{ py: '6px', px: '12px' }}
                 >
                   <Typography variant="body2" color="text.primary">
@@ -152,11 +140,6 @@ function AppAppBar({ mode, toggleColorMode }) {
                     Monografi statis & dinamis
                   </MenuItem>
                   <MenuItem
-                    onClick={handleInfoClick}
-                  >
-                    Daftar Informasi Publik
-                  </MenuItem>
-                  <MenuItem
                     component={Link} // Use Link as the Button's component
                     to="/profil/visi" // The route to navigate to 
                     onClick={() => scrollToSection('visi-misi')}
@@ -190,42 +173,6 @@ function AppAppBar({ mode, toggleColorMode }) {
                     onClick={() => scrollToSection('regulasi')}
                   >
                     Regulasi
-                  </MenuItem>
-                </Menu>
-                <Menu
-                  anchorEl={infoAnchorEl}
-                  open={Boolean(infoAnchorEl)}
-                  onClose={handleInfoClose}
-                  MenuListProps={{
-                    'aria-labelledby': 'info-button',
-                  }}
-                  PaperProps={{
-                    sx: { width: 220 }, // Adjust width as needed
-                  }}
-                >
-                  <MenuItem 
-                    component={Link} // Use Link as the Button's component
-                    to="/profil/informasi/berkala" // The route to navigate to 
-                  >
-                    Daftar Informasi Berkala
-                  </MenuItem>
-                  <MenuItem
-                    component={Link} // Use Link as the Button's component
-                    to="/profil/informasi/serta" // The route to navigate to  
-                  >
-                    Daftar Informasi Serta Merta
-                  </MenuItem>
-                  <MenuItem
-                    component={Link} // Use Link as the Button's component
-                    to="/profil/informasi/setiap" // The route to navigate to  
-                  >
-                    Daftar Informasi Setiap Saat
-                  </MenuItem>
-                  <MenuItem
-                    component={Link} // Use Link as the Button's component
-                    to="/profil/informasi/dikecualikan" // The route to navigate to  
-                  >
-                    Daftar Informasi Dikecualikan
                   </MenuItem>
                 </Menu>
                 <MenuItem

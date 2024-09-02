@@ -14,15 +14,15 @@ export default function Home() {
     return (
         <>
             <Hero />
-            <LogoCollection />
+            {/* <LogoCollection />
             <Features />
-            <Divider />
+            <Divider /> */}
             <Testimonials />
             <Divider />
             <Highlights />
             <Divider />
-            <Pricing />
-            <Divider />
+            {/* <Pricing />
+            <Divider /> */}
             <FAQ />
             <Footer />
         </>

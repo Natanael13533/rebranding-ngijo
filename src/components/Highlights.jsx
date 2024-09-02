@@ -1,60 +1,12 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
 import Container from '@mui/material/Container';
-import Grid from '@mui/material/Grid';
-import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import AutoFixHighRoundedIcon from '@mui/icons-material/AutoFixHighRounded';
-import ConstructionRoundedIcon from '@mui/icons-material/ConstructionRounded';
-import QueryStatsRoundedIcon from '@mui/icons-material/QueryStatsRounded';
-import SettingsSuggestRoundedIcon from '@mui/icons-material/SettingsSuggestRounded';
-import SupportAgentRoundedIcon from '@mui/icons-material/SupportAgentRounded';
-import ThumbUpAltRoundedIcon from '@mui/icons-material/ThumbUpAltRounded';
 
-const items = [
-  {
-    icon: <SettingsSuggestRoundedIcon />,
-    title: 'Adaptable performance',
-    description:
-      'Our product effortlessly adjusts to your needs, boosting efficiency and simplifying your tasks.',
-  },
-  {
-    icon: <ConstructionRoundedIcon />,
-    title: 'Built to last',
-    description:
-      'Experience unmatched durability that goes above and beyond with lasting investment.',
-  },
-  {
-    icon: <ThumbUpAltRoundedIcon />,
-    title: 'Great user experience',
-    description:
-      'Integrate our product into your routine with an intuitive and easy-to-use interface.',
-  },
-  {
-    icon: <AutoFixHighRoundedIcon />,
-    title: 'Innovative functionality',
-    description:
-      'Stay ahead with features that set new standards, addressing your evolving needs better than the rest.',
-  },
-  {
-    icon: <SupportAgentRoundedIcon />,
-    title: 'Reliable support',
-    description:
-      'Count on our responsive customer support, offering assistance that goes beyond the purchase.',
-  },
-  {
-    icon: <QueryStatsRoundedIcon />,
-    title: 'Precision in every detail',
-    description:
-      'Enjoy a meticulously crafted product where small touches make a significant impact on your overall experience.',
-  },
-];
-
-export default function Highlights() {
+export default function SmartCityInfo() {
   return (
     <Box
-      id="highlights"
+      id="smartcity"
       sx={{
         pt: { xs: 4, sm: 12 },
         pb: { xs: 8, sm: 16 },
@@ -78,45 +30,46 @@ export default function Highlights() {
           }}
         >
           <Typography component="h2" variant="h4">
-            Tematik
+            SEMARANG SMART CITY
           </Typography>
           <Typography variant="body1" sx={{ color: 'grey.400' }}>
-            Explore why our product stands out: adaptability, durability,
-            user-friendly design, and innovation. Enjoy reliable customer support and
-            precision in every detail.
+            Smart city adalah konsep kota cerdas yang dirancang guna membantu berbagai hal kegiatan masyarakat, terutama dalam upaya mengelola sumber daya yang ada dengan efisien, serta memberikan kemudahan mengakses informasi kepada masyarakat, hingga untuk mengantisipasi kejadian yang tak terduga sebelumnya.
+          </Typography>
+          <Typography variant="body1" sx={{ color: 'grey.400', mt: 2 }}>
+            Dikutip dari laman smartcityindonesia.org, sebuah kota dikatakan Smart apabila kota tersebut benar-benar dapat mengetahui keadaan kota di dalamnya, memahami permasalahan tersebut secara lebih mendalam, hingga mampu melakukan aksi terhadap permasalahan tersebut.
+          </Typography>
+          <Typography variant="body1" sx={{ color: 'grey.400', mt: 2 }}>
+            Sedangkan dalam buku Pengenalan dan Pengembangan Smart City, kota cerdas didefinisikan sebagai sebuah konsep pengembangan dan pengelolaan kota dengan pemanfaatan Teknologi Informasi dan Komunikasi (TIK) untuk menghubungkan, memonitor, dan mengendalikan berbagai sumber daya yang ada di dalam kota dengan lebih efektif dan efisien untuk memaksimalkan pelayanan kepada warganya serta mendukung pembangunan yang berkelanjutan.
+          </Typography>
+          <Typography variant="body1" sx={{ color: 'grey.400', mt: 2 }}>
+            Berdasarkan definisi tersebut, ada beberapa hal yang dapat kita garis bawahi berkaitan dengan smart city.
+          </Typography>
+          <Typography variant="body1" sx={{ color: 'grey.400', mt: 2 }}>
+            Pertama, yaitu sebuah konsep yang diterapkan oleh sistem pemerintahan daerah dalam mengelola masyarakat perkotaan.
+            <br />
+            Kedua, mensyaratkan pengelolaan daerah terhadap segala sumber daya dengan efektif dan efisien.
+            <br />
+            Ketiga, smart city diharapkan mampu menjalankan fungsi penyedia informasi secara tepat kepada masyarakat dan mampu mengantisipasi kejadian yang tak terduga.
+          </Typography>
+          <Typography variant="body1" sx={{ color: 'grey.400', mt: 2 }}>
+            Smart city berarti kota cerdas. Saat kita mengatakan suatu kota adalah kota yang cerdas, sebenarnya adalah sebuah majas personifikasi yang mengumpamakan kota seperti manusia seakan kota dapat merasakan, berpikir dan bertindak terhadap kondisi internal dan eksternal dari kota tersebut.
+          </Typography>
+          <Typography variant="body1" sx={{ color: 'grey.400', mt: 2 }}>
+            <strong>Aspek utama Smart City</strong>
+            <br />
+            Pada tahun 2014, Frost & Sullivan mengidentifikasi 8 aspek utama dari penerapan smart city, yaitu smart governance, smart infrastructure, smart technology, smart mobility, smart healthcare, smart energy, smart building, dan smart citizen.
+          </Typography>
+          <Typography variant="body1" sx={{ color: 'grey.400', mt: 2 }}>
+            <strong>Tujuan Smart City</strong>
+            <br />
+            Tujuan utama dari diadakannya smart city antara lain untuk membentuk suatu kota yang aman dan nyaman bagi warga serta untuk memperkuat daya saing kota dalam hal perekonomian. Sehingga dapat dijelaskan bahwa tujuan pelaksanaan smart city dapat dibagi menjadi 3 agenda utama, yaitu untuk menunjang kota di dalam dimensi sosial (keamanan), ekonomi (daya saing), dan lingkungan (kenyamanan).
+            <br />
+            Atau lebih umum dikutip dari laman United Nation, dapat dikatakan bahwa tujuan smart city adalah untuk membentuk kota yang Sustainable (ekonomi, sosial, lingkungan).
+          </Typography>
+          <Typography variant="body1" sx={{ color: 'grey.400', mt: 2 }}>
+            Untuk lebih jelasnya, silahkan klik <a href="https://semarangsmmartcity">Semarang Smartcity</a>
           </Typography>
         </Box>
-        <Grid container spacing={2.5}>
-          {items.map((item, index) => (
-            <Grid item xs={12} sm={6} md={4} key={index}>
-              <Stack
-                direction="column"
-                color="inherit"
-                component={Card}
-                spacing={1}
-                useFlexGap
-                sx={{
-                  p: 3,
-                  height: '100%',
-                  border: '1px solid',
-                  borderColor: 'grey.800',
-                  background: 'transparent',
-                  backgroundColor: 'grey.900',
-                }}
-              >
-                <Box sx={{ opacity: '50%' }}>{item.icon}</Box>
-                <div>
-                  <Typography fontWeight="medium" gutterBottom>
-                    {item.title}
-                  </Typography>
-                  <Typography variant="body2" sx={{ color: 'grey.400' }}>
-                    {item.description}
-                  </Typography>
-                </div>
-              </Stack>
-            </Grid>
-          ))}
-        </Grid>
       </Container>
     </Box>
   );
