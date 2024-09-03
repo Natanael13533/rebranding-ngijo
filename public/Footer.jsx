@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
 
@@ -11,15 +12,15 @@ const logoStyle = {
 
 export default function Footer() {
   return (
-    <Box
+    <Container
       sx={{
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        pt: { xs: 4, sm: 12 },
-        pb: { xs: 8, sm: 16 },
-        backgroundColor: 'red',
+        gap: { xs: 4, sm: 8 },
+        py: { xs: 8, sm: 10 },
         textAlign: { sm: 'center', md: 'left' },
+        backgroundColor: 'red',
       }}
     >
       <Box
@@ -68,6 +69,6 @@ export default function Footer() {
           </Link>
         </Stack>
       </Box>
-    </Box>
+    </Container>
   );
 }

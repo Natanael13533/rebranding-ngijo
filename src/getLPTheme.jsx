@@ -4,13 +4,13 @@ import { red } from '@mui/material/colors';
 export const brand = {
   50: '#0a0a0a',
   100: '#CEE5FD',
-  200: '#9CCCFC',
+  200: '#d6060b',
   300: '#ED1C24',
   400: '#d6060b',
   500: '#A0153E',
-  600: '#FFFFFF',
-  700: '#033363',
-  800: '#02294F',
+  600: '#d6060b',
+  700: '#d6060b',
+  800: '#d6060b',
   900: '#021F3B',
 };
 

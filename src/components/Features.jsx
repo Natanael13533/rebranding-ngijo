@@ -46,7 +46,7 @@ export default function Features() {
   const handleItemClick = (index) => {
     setSelectedItemIndex(index);
   };
-
+  
   const selectedFeature = items[selectedItemIndex];
 
   return (
@@ -209,26 +209,6 @@ export default function Features() {
                     >
                       {description}
                     </Typography>
-                    <Link
-                      color="primary"
-                      variant="body2"
-                      fontWeight="bold"
-                      sx={{
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        '& > svg': { transition: '0.2s' },
-                        '&:hover > svg': { transform: 'translateX(2px)' },
-                      }}
-                      onClick={(event) => {
-                        event.stopPropagation();
-                      }}
-                    >
-                      <span>Learn more</span>
-                      <ChevronRightRoundedIcon
-                        fontSize="small"
-                        sx={{ mt: '1px', ml: '2px' }}
-                      />
-                    </Link>
                   </Box>
                 </Box>
               </Card>
@@ -253,9 +233,9 @@ export default function Features() {
             <Box
               sx={{
                 m: 'auto',
-                width: 420,
+                width: 480,
                 height: 500,
-                backgroundSize: 'contain',
+                backgroundSize: '100% 100%',
                 backgroundImage: (theme) =>
                   theme.palette.mode === 'light'
                     ? items[selectedItemIndex].imageLight

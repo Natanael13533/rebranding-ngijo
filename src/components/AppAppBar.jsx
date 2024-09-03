@@ -25,7 +25,6 @@ const logoStyle = {
 function AppAppBar({ mode, toggleColorMode }) {
   const [open, setOpen] = React.useState(false);
   const [profilAnchorEl, setProfilAnchorEl] = React.useState(null);
-  const [infoAnchorEl, setInfoAnchorEl] = React.useState(null);
 
   const toggleDrawer = (newOpen) => () => {
     setOpen(newOpen);
@@ -33,19 +32,10 @@ function AppAppBar({ mode, toggleColorMode }) {
 
   const handleProfilClick = (event) => {
     setProfilAnchorEl(event.currentTarget);
-    setInfoAnchorEl(null); // Ensure the info menu closes when profiling is opened
   };
 
   const handleProfilClose = () => {
     setProfilAnchorEl(null);
-  };
-
-  const handleInfoClick = (event) => {
-    setInfoAnchorEl(event.currentTarget);
-  };
-
-  const handleInfoClose = () => {
-    setInfoAnchorEl(null);
   };
 
   const scrollToSection = (sectionId) => {
@@ -60,7 +50,6 @@ function AppAppBar({ mode, toggleColorMode }) {
       });
       setOpen(false);
       handleProfilClose();
-      handleInfoClose();
     }
   };
 
@@ -116,7 +105,6 @@ function AppAppBar({ mode, toggleColorMode }) {
                 <Button
                   component={Link} // Use Link as the Button's component
                   to="/" // The route to navigate to
-                  // onClick={scrollToSection('home')}
                   sx={{ py: '6px', px: '12px' }}
                 >
                   <Typography variant="body2" color="text.primary">
@@ -152,86 +140,39 @@ function AppAppBar({ mode, toggleColorMode }) {
                     Monografi statis & dinamis
                   </MenuItem>
                   <MenuItem
-                    onClick={handleInfoClick}
-                  >
-                    Daftar Informasi Publik
-                  </MenuItem>
-                  <MenuItem
                     component={Link} // Use Link as the Button's component
                     to="/profil/visi" // The route to navigate to 
-                    onClick={() => scrollToSection('visi-misi')}
                   >
                     Visi Misi
                   </MenuItem>
                   <MenuItem
                     component={Link} // Use Link as the Button's component
                     to="/profil/struktur" // The route to navigate to 
-                    onClick={() => scrollToSection('struktur')}
                   >
                     Struktur Pemerintahan
                   </MenuItem>
                   <MenuItem
                     component={Link} // Use Link as the Button's component
                     to="/profil/sarana" // The route to navigate to 
-                    onClick={() => scrollToSection('sarana')}
                   >
                     Sarana Prasarana
                   </MenuItem>
                   <MenuItem
                     component={Link} // Use Link as the Button's component
                     to="/profil/sumber" // The route to navigate to 
-                    onClick={() => scrollToSection('sumber-daya')}
                   >
                     Sumber Daya Manusia
                   </MenuItem>
                   <MenuItem
                     component={Link} // Use Link as the Button's component
                     to="/profil/regulasi" // The route to navigate to 
-                    onClick={() => scrollToSection('regulasi')}
                   >
                     Regulasi
-                  </MenuItem>
-                </Menu>
-                <Menu
-                  anchorEl={infoAnchorEl}
-                  open={Boolean(infoAnchorEl)}
-                  onClose={handleInfoClose}
-                  MenuListProps={{
-                    'aria-labelledby': 'info-button',
-                  }}
-                  PaperProps={{
-                    sx: { width: 220 }, // Adjust width as needed
-                  }}
-                >
-                  <MenuItem 
-                    component={Link} // Use Link as the Button's component
-                    to="/profil/informasi/berkala" // The route to navigate to 
-                  >
-                    Daftar Informasi Berkala
-                  </MenuItem>
-                  <MenuItem
-                    component={Link} // Use Link as the Button's component
-                    to="/profil/informasi/serta" // The route to navigate to  
-                  >
-                    Daftar Informasi Serta Merta
-                  </MenuItem>
-                  <MenuItem
-                    component={Link} // Use Link as the Button's component
-                    to="/profil/informasi/setiap" // The route to navigate to  
-                  >
-                    Daftar Informasi Setiap Saat
-                  </MenuItem>
-                  <MenuItem
-                    component={Link} // Use Link as the Button's component
-                    to="/profil/informasi/dikecualikan" // The route to navigate to  
-                  >
-                    Daftar Informasi Dikecualikan
                   </MenuItem>
                 </Menu>
                 <MenuItem
                   component={Link} // Use Link as the Button's component
                   to="/galeri" // The route to navigate to
-                  onClick={() => scrollToSection('testimonials')}
                   sx={{ py: '6px', px: '12px' }}
                 >
                   <Typography variant="body2" color="text.primary">
@@ -241,7 +182,6 @@ function AppAppBar({ mode, toggleColorMode }) {
                 <MenuItem
                   component={Link} // Use Link as the Button's component
                   to="/tematik" // The route to navigate to
-                  onClick={() => scrollToSection('highlights')}
                   sx={{ py: '6px', px: '12px' }}
                 >
                   <Typography variant="body2" color="text.primary">
@@ -251,7 +191,6 @@ function AppAppBar({ mode, toggleColorMode }) {
                 <MenuItem
                   component={Link} // Use Link as the Button's component
                   to="/berita" // The route to navigate to
-                  onClick={() => scrollToSection('pricing')}
                   sx={{ py: '6px', px: '12px' }}
                 >
                   <Typography variant="body2" color="text.primary">
@@ -261,7 +200,6 @@ function AppAppBar({ mode, toggleColorMode }) {
                 <MenuItem
                   component={Link} // Use Link as the Button's component
                   to="/about" // The route to navigate to
-                  onClick={() => scrollToSection('faq')}
                   sx={{ py: '6px', px: '12px' }}
                 >
                   <Typography variant="body2" color="text.primary">
