@@ -102,7 +102,7 @@ function AppAppBar({ mode, toggleColorMode }) {
                 alt="logo of sitemark"
               />
               <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-                <Button
+                <MenuItem
                   component={Link} // Use Link as the Button's component
                   to="/" // The route to navigate to
                   sx={{ py: '6px', px: '12px' }}
@@ -110,15 +110,15 @@ function AppAppBar({ mode, toggleColorMode }) {
                   <Typography variant="body2" color="text.primary">
                     Beranda
                   </Typography>
-                </Button>
-                <Button
+                </MenuItem>
+                <MenuItem
                   onClick={handleProfilClick}
                   sx={{ py: '6px', px: '12px' }}
                 >
                   <Typography variant="body2" color="text.primary">
                     Profil Kelurahan
                   </Typography>
-                </Button>
+                </MenuItem>
                 <Menu
                   anchorEl={profilAnchorEl}
                   open={Boolean(profilAnchorEl)}
@@ -215,7 +215,7 @@ function AppAppBar({ mode, toggleColorMode }) {
                 alignItems: 'center',
               }}
             >
-              <ToggleColorMode mode={mode} toggleColorMode={toggleColorMode} />
+            <ToggleColorMode mode={mode} toggleColorMode={toggleColorMode} />
             </Box>
             <Box sx={{ display: { sm: '', md: 'none' } }}>
               <Button
@@ -244,8 +244,112 @@ function AppAppBar({ mode, toggleColorMode }) {
                       flexGrow: 1,
                     }}
                   >
-                    <ToggleColorMode mode={mode} toggleColorMode={toggleColorMode} />
+                  <ToggleColorMode mode={mode} toggleColorMode={toggleColorMode} />
                   </Box>
+                    <MenuItem
+                      component={Link} // Use Link as the Button's component
+                      to="/" // The route to navigate to
+                      sx={{ py: '6px', px: '12px' }}
+                    >
+                      <Typography variant="body2" color="text.primary">
+                        Beranda
+                      </Typography>
+                    </MenuItem>
+                    <MenuItem
+                      onClick={handleProfilClick}
+                      sx={{ py: '6px', px: '12px' }}
+                    >
+                      <Typography variant="body2" color="text.primary">
+                        Profil Kelurahan
+                      </Typography>
+                    </MenuItem>
+                    <Menu
+                      anchorEl={profilAnchorEl}
+                      open={Boolean(profilAnchorEl)}
+                      onClose={handleProfilClose}
+                      MenuListProps={{
+                        'aria-labelledby': 'profil-button',
+                      }}
+                    >
+                      <MenuItem
+                        component={Link} // Use Link as the Button's component
+                        to="/profil/sitemap" // The route to navigate to 
+                      >
+                        sitemap
+                      </MenuItem>
+                      <MenuItem
+                        component={Link} // Use Link as the Button's component
+                        to="/profil/monografi" // The route to navigate to
+                      >
+                        Monografi statis & dinamis
+                      </MenuItem>
+                      <MenuItem
+                        component={Link} // Use Link as the Button's component
+                        to="/profil/visi" // The route to navigate to 
+                      >
+                        Visi Misi
+                      </MenuItem>
+                      <MenuItem
+                        component={Link} // Use Link as the Button's component
+                        to="/profil/struktur" // The route to navigate to 
+                      >
+                        Struktur Pemerintahan
+                      </MenuItem>
+                      <MenuItem
+                        component={Link} // Use Link as the Button's component
+                        to="/profil/sarana" // The route to navigate to 
+                      >
+                        Sarana Prasarana
+                      </MenuItem>
+                      <MenuItem
+                        component={Link} // Use Link as the Button's component
+                        to="/profil/sumber" // The route to navigate to 
+                      >
+                        Sumber Daya Manusia
+                      </MenuItem>
+                      <MenuItem
+                        component={Link} // Use Link as the Button's component
+                        to="/profil/regulasi" // The route to navigate to 
+                      >
+                        Regulasi
+                      </MenuItem>
+                    </Menu>
+                    <MenuItem
+                      component={Link} // Use Link as the Button's component
+                      to="/galeri" // The route to navigate to
+                      sx={{ py: '6px', px: '12px' }}
+                    >
+                      <Typography variant="body2" color="text.primary">
+                        Galeri
+                      </Typography>
+                    </MenuItem>
+                    <MenuItem
+                      component={Link} // Use Link as the Button's component
+                      to="/tematik" // The route to navigate to
+                      sx={{ py: '6px', px: '12px' }}
+                    >
+                      <Typography variant="body2" color="text.primary">
+                        Tematik
+                      </Typography>
+                    </MenuItem>
+                    <MenuItem
+                      component={Link} // Use Link as the Button's component
+                      to="/berita" // The route to navigate to
+                      sx={{ py: '6px', px: '12px' }}
+                    >
+                      <Typography variant="body2" color="text.primary">
+                        Berita
+                      </Typography>
+                    </MenuItem>
+                    <MenuItem
+                      component={Link} // Use Link as the Button's component
+                      to="/about" // The route to navigate to
+                      sx={{ py: '6px', px: '12px' }}
+                    >
+                      <Typography variant="body2" color="text.primary">
+                        About Us
+                      </Typography>
+                    </MenuItem>
                   <Divider />
                 </Box>
               </Drawer>

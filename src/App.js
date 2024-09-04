@@ -12,6 +12,7 @@ import getLPTheme from './getLPTheme';
 
 import Berita from './pages/Berita';
 import BeritaDetail from './pages/BeritaDetail'
+import BeritaBlog from './components/Berita/BeritaBlog'
 import Galeri from './pages/Galeri';
 import Tematik from './pages/Tematik';
 import About from './pages/About';
@@ -32,6 +33,7 @@ import Setiap from './pages/daftar-informasi-publik/Setiap'
 import Dikecualikan from './pages/daftar-informasi-publik/Dikecualikan'
 import NotFound from './pages/NotFound';
 import GaleriDetail from './pages/GaleriDetail';
+import GaleriBlog from './components/Galeri/GaleriBlog'
 
 function ToggleCustomTheme({ showCustomTheme, toggleCustomTheme }) {
   return (
@@ -132,10 +134,10 @@ const App = () => {
           <Box sx={{ bgcolor: 'background.default' }}>
             <Routes>
               <Route path="/berita" element={<Screen><Berita /></Screen>} />
-              <Route path="/berita/:id" element={<Screen><BeritaDetail /></Screen>} />
+              <Route path="/berita/:id" element={<Screen><BeritaBlog /></Screen>} />
               <Route path="/" element={<Home />} />
               <Route path="/galeri" element={<Screen><Galeri /></Screen>} />
-              <Route path="/galeri/:id" element={<Screen><GaleriDetail /></Screen>} />
+              <Route path="/galeri/:id" element={<Screen><GaleriBlog /></Screen>} />
               <Route path="/tematik" element={<Screen><Tematik /></Screen>} />
               <Route path="/about" element={<Screen><About /></Screen>} />
 
