@@ -4,7 +4,6 @@ from django.contrib.auth.models import User
 # Create your models here.
 class Berita(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
-    image = models.ImageField(null=True, blank=True)
     title = models.CharField(max_length=150)
     description = models.TextField()
     updated_at = models.DateTimeField(auto_now=True)
@@ -12,12 +11,10 @@ class Berita(models.Model):
 
     def __str__(self):
         return self.title
-    
-    class Meta:
-        db_table = "tbBerita"
 
 class Galeri(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    image = models.ImageField(null=True, blank=True)
     title = models.CharField(max_length=150)
     description = models.TextField()
     updated_at = models.DateTimeField(auto_now=True)
@@ -25,18 +22,12 @@ class Galeri(models.Model):
 
     def __str__(self):
         return self.title
-    
-    class Meta:
-        db_table = "tbGaleri"
 
-class GaleriImage(models.Model):
-    galeri = models.ForeignKey(Galeri, on_delete=models.SET_NULL, null=True)
+class BeritaImage(models.Model):
+    berita = models.ForeignKey(Berita, on_delete=models.SET_NULL, null=True)
     image = models.ImageField(null=True, blank=True)
     updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    
-    class Meta:
-        db_table = "tbGaleriImage"
 
 class Pegawai(models.Model):
     ROLE_CHOICES = [('sipil', 'sipil'), ('Non-ASN', 'Non-ASN')]
@@ -52,6 +43,3 @@ class Pegawai(models.Model):
 
     def __str__(self):
             return self.name
-    
-    class Meta:
-        db_table = "tbPegawai"

@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from app.models import Berita, Galeri, GaleriImage, Pegawai
+from app.models import Berita, Galeri, BeritaImage, Pegawai
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -12,23 +12,23 @@ class UserSerializer(serializers.ModelSerializer):
         user = User.objects.create_user(**validated_data)
         return user
 
-class BeritaSerializer(serializers.ModelSerializer):
+class GaleriSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Berita
+        model = Galeri
         fields = '__all__'
         extra_kwargs = {"user": {"read_only": True}}
 
-class GaleriImagesSerializer(serializers.ModelSerializer):
+class BeritaImagesSerializer(serializers.ModelSerializer):
     class Meta:
-        model = GaleriImage
-        fields = ['galeri', 'image']
+        model = BeritaImage
+        fields = ['berita', 'image']
         extra_kwargs = {"galeri": {"read_only": True}}
 
-class GaleriSerializer(serializers.ModelSerializer):
-    images = GaleriImagesSerializer(many=True, read_only=True, source='galeriimage_set')
+class BeritaSerializer(serializers.ModelSerializer):
+    images = BeritaImagesSerializer(many=True, read_only=True, source='beritaimage_set')
 
     class Meta:
-        model = Galeri
+        model = Berita
         fields = '__all__'
         extra_kwargs = {"user": {"read_only": True}}
 
