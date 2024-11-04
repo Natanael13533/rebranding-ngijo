@@ -9,6 +9,7 @@ import PushPinIcon from '@mui/icons-material/PushPin';
 import PersonIcon from '@mui/icons-material/Person';
 import XIcon from '@mui/icons-material/X';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Slider from 'react-slick';
 import Markdown from './Markdown';
 import Sidebar from './Sidebar';
 import axios from 'axios';
@@ -60,30 +61,77 @@ export default function BeritaBlog() {
     ],
     };
 
+    const settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+    };
+
     return (
         <>
         <CssBaseline />
             <Container maxWidth="lg">
                 <main>
-                <Paper
-                    sx={{
-                        position: 'sticky',
-                        backgroundColor: 'grey.800',
-                        color: '#fff',
-                        mb: 2,
-                        backgroundSize: 'cover',
-                        backgroundRepeat: 'no-repeat !important',
-                        backgroundPosition: 'center',
-                        backgroundImage: `url(${item.image})`,
-                    }}
-                >
-                    {/* Fallback for when the image is missing */}
-                    {item?.image ? (
-                        <img src={item.image} alt={item.title} />
-                    ) : (
-                        <Typography>No image available</Typography>
-                    )}
-                </Paper>
+                {item.images.length > 1 ? (
+                    <Slider {...settings}>
+                    {item.images.map((image, index) => (
+                        <Paper
+                            key={index}
+                            sx={{
+                                    position: 'relative',
+                                    backgroundColor: 'grey.800',
+                                    color: '#fff',
+                                    mb: 2,
+                                    width: '80%', // Adjust to control width
+                                    maxWidth: '1200px', // Restrict the max width
+                                    mx: 'auto', // Center horizontally
+                                    height: '100%', // Set a full viewport height
+                                    overflow: 'hidden', // Ensure image doesn’t overflow
+                                }}
+                        >
+                            {image?.image ? (
+                                <img
+                                    src={image.image}
+                                    alt={image.title}
+                                    style={{
+                                        width: '100%',
+                                        height: '100%',
+                                        objectFit: 'cover',
+                                    }}
+                                />
+                            ) : (
+                                <Typography>No image available</Typography>
+                            )}
+                        </Paper>
+                    ))}
+                    </Slider>
+                ) : (
+                    <Paper
+                        sx={{
+                            position: 'relative',
+                            backgroundColor: 'grey.800',
+                            color: '#fff',
+                            mb: 2,
+                            width: '80%',
+                            maxWidth: '1200px',
+                            mx: 'auto',
+                            height: '100%',
+                            overflow: 'hidden',
+                        }}
+                    >
+                        <img
+                            src={item.images[0].image}
+                            alt={item.images[0].title}
+                            style={{
+                                width: '100%',
+                                height: '100%',
+                                objectFit: 'cover',
+                            }}
+                        />
+                    </Paper>
+                )}
                     <Grid container spacing={5} sx={{ mt: 3 }}>
                         <Grid
                             item
@@ -111,5 +159,55 @@ export default function BeritaBlog() {
                 </main>
             </Container>
         </>
+        // <>
+        // <CssBaseline />
+        //     <Container maxWidth="lg">
+        //         <main>
+        //         <Paper
+        //             sx={{
+        //                 position: 'sticky',
+        //                 backgroundColor: 'grey.800',
+        //                 color: '#fff',
+        //                 mb: 2,
+        //                 backgroundSize: 'cover',
+        //                 backgroundRepeat: 'no-repeat !important',
+        //                 backgroundPosition: 'center',
+        //                 backgroundImage: `url(${item.image})`,
+        //             }}
+        //         >
+        //             {/* Fallback for when the image is missing */}
+        //             {item?.image ? (
+        //                 <img src={item.image} alt={item.title} />
+        //             ) : (
+        //                 <Typography>No image available</Typography>
+        //             )}
+        //         </Paper>
+        //             <Grid container spacing={5} sx={{ mt: 3 }}>
+        //                 <Grid
+        //                     item
+        //                     xs={12}
+        //                     md={8}
+        //                     sx={{
+        //                         '& .markdown': {
+        //                         py: 3,
+        //                         },
+        //                     }}
+        //                 >
+        //                     <Typography variant="h6" gutterBottom>
+        //                         {item.title}
+        //                     </Typography>
+        //                     <Divider />
+        //                         <Markdown className="markdown" key={item.description.substring(0, 40)}>
+        //                             {item.description}
+        //                         </Markdown>
+        //                 </Grid>
+        //                 {/* <Main title="From the firehose" posts={posts} /> */}
+        //                 <Sidebar
+        //                     social={sidebar.social}
+        //                 />
+        //             </Grid>
+        //         </main>
+        //     </Container>
+        // </>
     );
 }

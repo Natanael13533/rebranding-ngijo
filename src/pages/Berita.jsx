@@ -28,12 +28,12 @@ export default function Berita() {
     }, []);
 
     return (
-        <Box sx={{ display: 'flex', flexWrap: 'wrap', width: '100%', maxWidth: 1500, height: '100%', maxHeight: 1500, gap: 2 }}>
+        <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2 }}>
             {data.map((item) => (
                 <Card key={item.id} sx={{ maxWidth: 345 }}>
                     <CardMedia
                         sx={{ height: 250 }}
-                        image={item.image} // Fallback image
+                        image={ item.images.length > 0 ? item.images[0].image : item.title}
                         title={item.title}
                     />
                     <CardContent>
@@ -53,5 +53,30 @@ export default function Berita() {
                 </Card>
             ))}
         </Box>
+        // <Box sx={{ display: 'flex', flexWrap: 'wrap', width: '100%', maxWidth: 1500, height: '100%', maxHeight: 1500, gap: 2 }}>
+        //     {data.map((item) => (
+        //         <Card key={item.id} sx={{ maxWidth: 345 }}>
+        //             <CardMedia
+        //                 sx={{ height: 250 }}
+        //                 image={item.image} // Fallback image
+        //                 title={item.title}
+        //             />
+        //             <CardContent>
+        //                 <Typography gutterBottom variant="h5" component="div" sx={{ color: '#B22222' }}>
+        //                     {item.title}
+        //                 </Typography>
+        //                 <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+        //                     {item.description.length > 200 
+        //                         ? `${item.description.slice(0, 200)}...` 
+        //                         : item.description
+        //                     }
+        //                 </Typography>
+        //             </CardContent>
+        //             <CardActions>
+        //                 <Button component={Link} to={`/berita/${item.id}`} size="medium" >Learn More</Button>
+        //             </CardActions>
+        //         </Card>
+        //     ))}
+        // </Box>
     );
 }

@@ -72,30 +72,33 @@ export default function BeritaBlog() {
         <CssBaseline />
             <Container maxWidth="lg">
                 <main>
-                <Slider {...settings}>
-                {item.images.map((image, index) => (
-                    <Paper
-                        key={index}
-                        sx={{
-                            position: 'sticky',
-                            backgroundColor: 'grey.800',
-                            color: '#fff',
-                            mb: 2,
-                            backgroundSize: 'cover',
-                            backgroundRepeat: 'no-repeat !important',
-                            backgroundPosition: 'center',
-                            backgroundImage: `url(${image.image})`,
-                        }}
-                    >
-                        {/* Fallback for when the image is missing */}
-                        {image?.image ? (
-                            <img src={image.image} alt={image.id} />
-                        ) : (
-                            <Typography>No image available</Typography>
-                        )}
-                    </Paper>
-                ))}
-                </Slider>
+                <Paper
+                    sx={{
+                        position: 'relative',
+                        backgroundColor: 'grey.800',
+                        color: '#fff',
+                        mb: 2,
+                        width: '80%', // Adjust to control width
+                        maxWidth: '1200px', // Restrict the max width
+                        mx: 'auto', // Center horizontally
+                        height: '100%', // Set a full viewport height
+                        overflow: 'hidden', // Ensure image doesn’t overflow
+                    }}
+                >
+                    {item?.image ? (
+                        <img
+                            src={item.image}
+                            alt={item.title}
+                            style={{
+                                width: '100%',
+                                height: '100%',
+                                objectFit: 'cover',
+                            }}
+                        />
+                    ) : (
+                        <Typography>No image available</Typography>
+                    )}
+                </Paper>
                     <Grid container spacing={5} sx={{ mt: 3 }}>
                         <Grid
                             item
